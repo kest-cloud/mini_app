@@ -8,9 +8,9 @@ This is a Mini Blog App that accepts API to fetch post,
 
 can create post, 
 
-can uodate and delete post. 
+can update and delete post. 
 
-It also allow commentings
+It allow comments
 
 and finally you can rate each post and the rating will be displayed.
 
