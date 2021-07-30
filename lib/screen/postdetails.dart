@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:mini_app/blogapi/postapi.dart';
 import 'package:mini_app/models/postmodel.dart';
 
-class PostDetails extends StatefulWidget {
-  int id;
+import '../main.dart';
 
-  PostDetails({Key? key, required this.id}) : super(key: key);
+class PostDetails extends StatefulWidget {
+  int userId;
+
+  PostDetails({Key? key, required this.userId}) : super(key: key);
 
   @override
   _PostDetailsState createState() => _PostDetailsState();
@@ -22,15 +24,19 @@ class _PostDetailsState extends State<PostDetails> {
       body: Padding(
         padding: EdgeInsets.all(20),
         child: FutureBuilder(
-          future: postAPI.find(widget.id),
+          future: postAPI.find(widget.userId),
           builder: (context, AsyncSnapshot<Post> snapshot) {
             if (snapshot.hasData) {
               return Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(snapshot.data!.id.toString()),
+                  Text(snapshot.data!.userId.toString()),
                   Padding(
                     padding: EdgeInsets.all(10.0),
+                  ),
+                  Text(
+                    "News Headline",
+                    style: TextStyle(fontWeight: FontWeight.bold),
                   ),
                   Text(snapshot.data!.title),
                   Padding(
@@ -70,6 +76,12 @@ class _PostDetailsState extends State<PostDetails> {
                   TextFormField(
                     decoration: InputDecoration(
                         border: UnderlineInputBorder(),
+                        labelText: 'Enter your name'),
+                  ),
+                  SizedBox(height: 20.0),
+                  TextFormField(
+                    decoration: InputDecoration(
+                        border: UnderlineInputBorder(),
                         labelText: 'Enter your email'),
                   ),
                   SizedBox(height: 20.0),
@@ -87,7 +99,23 @@ class _PostDetailsState extends State<PostDetails> {
                     child: Text(
                       "Post Comment",
                     ),
-                  )
+                  ),
+                  ElevatedButton(
+                    style: ButtonStyle(
+                      backgroundColor: MaterialStateProperty.all(Colors.orange),
+                    ),
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => BlogApp(),
+                        ),
+                      );
+                    },
+                    child: Text(
+                      "Back",
+                    ),
+                  ),
                 ],
               );
             } else {
