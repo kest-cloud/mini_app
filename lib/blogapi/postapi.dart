@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:core';
 
 import 'package:http/http.dart' as http;
+import 'package:mini_app/models/commentsmodel.dart';
 import 'package:mini_app/models/postmodel.dart';
 import 'package:mini_app/screen/Create_Posts.dart';
 
@@ -85,6 +86,25 @@ class PostAPI {
     } else {
       // then throw an exception.
       throw Exception('Failed to Delete Post.');
+    }
+  }
+
+  Future commentsPost(Comments comments) async {
+    final response = await http.post(
+      Uri.parse('$url/comments'),
+      headers: <String, String>{
+        'Content-Type': 'application/json; charset=UTF-8',
+      },
+      body: jsonEncode(comments.toJson()),
+    );
+    print(response);
+    if (response.statusCode == 201) {
+      return response.body;
+    } else {
+      // If the server did not return a 201 CREATED response,
+      // then throw an exception.
+      print(response.statusCode);
+      throw Exception('Failed to create Comment.');
     }
   }
 }

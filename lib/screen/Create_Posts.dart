@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mini_app/blogapi/postapi.dart';
+//import 'package:mini_app/blogapi/postapi.dart';
 
 import 'package:mini_app/models/postmodel.dart';
 import 'package:mini_app/provider/createpostprovider.dart';
@@ -20,7 +20,7 @@ class CreatePostsState extends State<CreatePosts> {
 
   @override
   Widget build(BuildContext context) {
-    var postAPI = new PostAPI();
+    // var postAPI = new PostAPI();
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
