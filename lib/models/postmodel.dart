@@ -5,12 +5,14 @@ class Post {
   int userId;
   String title;
   String body;
+  int rating = 0;
 
   Post(
       {required this.userId,
       required this.title,
       required this.body,
-      required this.id});
+      required this.id,
+      this.rating = 0});
 
   factory Post.fromJson(Map<String, dynamic> json) {
     return Post(

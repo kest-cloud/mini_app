@@ -94,7 +94,7 @@ class CreatePostProvider extends ChangeNotifier {
           id: null);
       var res = await postApi.createPost(post);
       print("CreatePostRes: $res");
-      message = "Post created successfully";
+      message = "Post Updated successfully";
       notifyListeners();
     } catch (error) {
       message = "Error: $error";

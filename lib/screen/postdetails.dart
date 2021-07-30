@@ -3,12 +3,15 @@ import 'package:mini_app/blogapi/postapi.dart';
 import 'package:mini_app/models/commentsmodel.dart';
 import 'package:mini_app/models/postmodel.dart';
 import 'package:mini_app/provider/createpostprovider.dart';
+import 'package:mini_app/provider/postprovider.dart';
+import 'package:mini_app/screen/Create_Posts.dart';
 import 'package:provider/provider.dart';
 
 import '../main.dart';
 
 class PostDetails extends StatefulWidget {
   Comments? comments;
+  Post? post;
   int userId;
 
   PostDetails({Key? key, required this.userId}) : super(key: key);
@@ -40,9 +43,15 @@ class _PostDetailsState extends State<PostDetails> {
                               value.setComments(widget.comments!);
                             }
 
+                            print(snapshot.data!);
+
                             return Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
+                                Consumer<PostProvider>(
+                                    builder: (context, postProvider, child) {
+                                  return Text("${postProvider.message}");
+                                }),
                                 Text(snapshot.data!.userId.toString()),
                                 Padding(
                                   padding: EdgeInsets.all(10.0),
@@ -69,12 +78,13 @@ class _PostDetailsState extends State<PostDetails> {
                                                 Colors.orange),
                                       ),
                                       onPressed: () {
-                                        // Navigator.push(
-                                        //     context,
-                                        //     MaterialPageRoute(
-                                        //       builder: (context) => createPosts(
-                                        //           userId: snapshot.data![index].id),
-                                        //     ));
+                                        Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (context) =>
+                                                    CreatePosts(
+                                                      post: snapshot.data!,
+                                                    )));
                                       },
                                       child: Text(
                                         "Update Post",
@@ -87,7 +97,11 @@ class _PostDetailsState extends State<PostDetails> {
                                             MaterialStateProperty.all(
                                                 Colors.orange),
                                       ),
-                                      onPressed: () {},
+                                      onPressed: () async {
+                                        Provider.of<PostProvider>(context,
+                                                listen: false)
+                                            .deletePost(snapshot.data!.id);
+                                      },
                                       child: Text(
                                         "Delete Post",
                                       ),

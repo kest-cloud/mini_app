@@ -1,11 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:mini_app/provider/postprovider.dart';
 
 import 'package:mini_app/screen/Create_Posts.dart';
 import 'package:mini_app/screen/postlists.dart';
+import 'package:provider/provider.dart';
 //import 'package:provider/provider.dart';
 
 void main() {
-  runApp(BlogApp());
+  runApp(MultiProvider(
+    providers: [ChangeNotifierProvider(create: (context) => PostProvider())],
+    child: BlogApp(),
+  ));
 }
 
 // ignore: must_be_immutable
@@ -23,23 +28,6 @@ class BlogApp extends StatelessWidget {
       home: Scaffold(
         appBar: AppBar(
           title: Text("My Blog"),
-          actions: [
-            PopupMenuButton(
-              itemBuilder: (context) => [
-                PopupMenuItem(
-                  child: Text("Create Post"),
-                  value: 1,
-                ),
-              ],
-              onSelected: (int menu) {
-                navigator.currentState!.push(
-                  MaterialPageRoute(
-                    builder: (context) => CreatePosts(),
-                  ),
-                );
-              },
-            )
-          ],
         ),
         body: PostListPage(),
       ),

@@ -73,16 +73,16 @@ class PostAPI {
     }
   }
 
-  Future<Post> deletePost(String userId) async {
+  Future deletePost(String Id) async {
     final http.Response response = await http.delete(
-      Uri.parse('$url/posts/$userId'),
+      Uri.parse('$url/posts/$Id'),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
       },
     );
 
     if (response.statusCode == 200) {
-      return Post.fromJson(jsonDecode(response.body));
+      return response.body;
     } else {
       // then throw an exception.
       throw Exception('Failed to Delete Post.');

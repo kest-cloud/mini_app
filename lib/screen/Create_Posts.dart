@@ -16,8 +16,6 @@ class CreatePosts extends StatefulWidget {
 }
 
 class CreatePostsState extends State<CreatePosts> {
-  Future<Post>? futurePost;
-
   @override
   Widget build(BuildContext context) {
     // var postAPI = new PostAPI();
