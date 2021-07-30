@@ -53,11 +53,13 @@ class CreatePostsState extends State<CreatePosts> {
                           decoration:
                               const InputDecoration(hintText: 'Enter Title'),
                         ),
+                        SizedBox(height: 10.0),
                         TextField(
                           controller: value.controllerBody,
                           decoration:
                               const InputDecoration(hintText: 'Enter Body'),
                         ),
+                        SizedBox(height: 50.0),
                         if (widget.post == null) ...[
                           ElevatedButton(
                               child: const Text('Create Data'),
