@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:mini_app/blogapi/postapi.dart';
 import 'package:mini_app/models/commentsmodel.dart';
 import 'package:mini_app/models/postmodel.dart';
-import 'package:provider/provider.dart';
+//import 'package:provider/provider.dart';
 
 class CreateCommentsProvider extends ChangeNotifier {
   String message = '';

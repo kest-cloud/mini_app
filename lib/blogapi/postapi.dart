@@ -4,7 +4,7 @@ import 'dart:core';
 import 'package:http/http.dart' as http;
 import 'package:mini_app/models/commentsmodel.dart';
 import 'package:mini_app/models/postmodel.dart';
-import 'package:mini_app/screen/Create_Posts.dart';
+//import 'package:mini_app/screen/Create_Posts.dart';
 
 class PostAPI {
   String url = "https://jsonplaceholder.typicode.com";

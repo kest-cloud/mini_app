@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mini_app/provider/postprovider.dart';
 
-import 'package:mini_app/screen/Create_Posts.dart';
+//import 'package:mini_app/screen/Create_Posts.dart';
 import 'package:mini_app/screen/postlists.dart';
 import 'package:provider/provider.dart';
 //import 'package:provider/provider.dart';
