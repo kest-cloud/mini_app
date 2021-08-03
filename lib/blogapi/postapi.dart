@@ -73,9 +73,9 @@ class PostAPI {
     }
   }
 
-  Future deletePost(String Id) async {
+  Future deletePost(String id) async {
     final http.Response response = await http.delete(
-      Uri.parse('$url/posts/$Id'),
+      Uri.parse('$url/posts/$id'),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
       },
